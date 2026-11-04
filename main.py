@@ -1,5 +1,4 @@
-def main_menu():
-
+import menu    
 
 if __name__ == "__main__":
-    main_menu()
+    menu.main_menu()

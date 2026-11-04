@@ -1,5 +1,6 @@
-from teams import *
-
+from files import write_to_file, get_file_content, TEAMS, MATCHES
+import inputs
+import teams
 
 def get_match(key, value):
     matches = get_file_content(MATCHES)
@@ -30,8 +31,8 @@ def is_match_exist(match):
 
 def is_valid_match(match):
     not_same = match["home_team_id"] != match["away_team_id"]
-    home = is_valid_team(match["home_team_id"])
-    away = is_valid_team(match["away_team_id"])
+    home = teams.is_valid_team(match["home_team_id"])
+    away = teams.is_valid_team(match["away_team_id"])
     home_goals = match["home_goals"] >= 0
     away_goals = match["away_goals"] >= 0
     return not_same and home and away and home_goals and away_goals

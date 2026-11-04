@@ -8,6 +8,6 @@ def get_string(message):
 def get_number(message):
     while True:
         user_input = get_string(message)
-        if user_input.is_digit():
+        if user_input.isdigit():
              return int(user_input)
         print("must be a number")

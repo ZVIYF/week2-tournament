@@ -1,6 +1,6 @@
 
 
-def main_menu():
+def print_main_menu():
         print(
 "========== TOURNAMENT MANAGER ==========",
 "1. Add team",
@@ -18,6 +18,8 @@ sep="\n\t"
 )
 
 
+     
+
 def print_team_info(team:dict):
     print(
         f"Team id:{team["id"].ljust(4)}",
@@ -29,3 +31,6 @@ def print_team_info(team:dict):
 def print_teams(teams:list):
     if not teams:
         print("No teams to show")
+    else:
+         for t in teams:
+              print_team_info(t)
