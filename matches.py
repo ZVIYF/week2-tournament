@@ -1,7 +1,7 @@
 from teams import *
 
 
-def get_team(key, value):
+def get_match(key, value):
     matches = get_file_content(MATCHES)
     for match in matches:
             if match[key] == value:

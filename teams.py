@@ -37,7 +37,7 @@ def create_team_object():
 
 def add_new_team():
     team = create_team_object()
-    if not (is_valid_team("id", team["id"]) or is_valid_team("id", team["name"])):
+    if not (is_valid_team("id", team["id"]) or is_valid_team("name", team["name"])):
         teams = get_file_content(TEAMS)
         teams.append(team)
         write_to_file(TEAMS, teams)
