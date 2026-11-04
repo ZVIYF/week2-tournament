@@ -1,9 +1,9 @@
-from files import write_to_file, get_file_content, TEAMS, MATCHES
+import files
 import inputs
 
 
 def get_team(key, value):
-    teams = get_file_content(TEAMS)
+    teams = files.get_file_content(files.TEAMS)
     for team in teams:
             if team[key] == value:
                 return team
@@ -38,7 +38,9 @@ def create_team_object():
 def add_new_team():
     team = create_team_object()
     if not (is_valid_team("id", team["id"]) or is_valid_team("name", team["name"])):
-        teams = get_file_content(TEAMS)
+        teams = files.get_file_content(files.TEAMS)
         teams.append(team)
-        write_to_file(TEAMS, teams)
+        files.write_to_file(files.TEAMS, teams)
+    else:
+        print("already exist")
         

@@ -21,11 +21,11 @@ sep="\n\t"
      
 
 def print_team_info(team:dict):
-    print(
-        f"Team id:{team["id"].ljust(4)}",
-        f"Team name:{team["name"].ljust(10)}",
-        f"Played:{team["played"].ljust(4)}",
-        f"Points:{team["points"].ljust(4)}"
+    print("",
+        "Team id:".ljust(10), team["id"],"\n",
+        "Team name:".ljust(10), team["name"],"\n",
+        "Played:".ljust(10), team["played"],"\n",
+        "Points:".ljust(10), team["points"],"\n\n"
         )
 
 def print_teams(teams:list):

@@ -1,10 +1,9 @@
-import inputs, prints, stats, matches, teams
-from files import write_to_file, get_file_content, TEAMS, MATCHES
+import inputs, prints, stats, matches, teams, files, sorts
 
 def want_exit_program():
     while True:
+        choice = inputs.get_string("Exit?  y/n").lower()
         try:    
-            choice = inputs.get_string("Exit?  y/n").lower()
             match choice:
                 case "y":
                     return True
@@ -24,14 +23,12 @@ def main_menu():
                 match choice:
                     case 1:
                         teams.add_new_team()
-                        exit = want_exit_program()                            
                     case 2:
-                        prints.print_teams(get_file_content(TEAMS))
-                        exit = want_exit_program()
+                        prints.print_teams(files.get_file_content(files.TEAMS))
                     case 3:
-                        pass
+                        matches.add_new_match()
                     case 4:
-                        pass
+                        prints.print_teams(sorts.get_sorted_teams)
                     case 5:
                         pass
                     case 6:
@@ -45,10 +42,13 @@ def main_menu():
                     case 10:
                         pass
                     case 0:
-                        exit = want_exit_program()
+                        break
                     case _:
                         raise ValueError("Choice must be a number between 0-10")
             except ValueError as error:
                 print(f"error: {error}")
+            exit = want_exit_program()
+            
 
-        
+if __name__ == "__main__":
+    main_menu()

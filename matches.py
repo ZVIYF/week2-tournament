@@ -10,11 +10,16 @@ def get_match(key, value):
 
 
 def create_match_object():
+    home_name = inputs.get_number("Enter home team ID:")
+    away_name = inputs.get_number("Enter away team ID:")
+    home_goals = inputs.get_number("Enter home team goals:")
+    away_goals = inputs.get_number("Enter away team goals:")
+    
     a_match = {
-    "home_team_id": inputs.get_number("Enter home team ID:"),
-    "away_team_id": inputs.get_number("Enter away team ID:"),
-    "home_goals": inputs.get_number("Enter home team goals:"),
-    "away_goals": inputs.get_number("Enter away team goals:")
+    "home_team_id": home_name,
+    "away_team_id": away_name,
+    "home_goals": home_goals,
+    "away_goals": away_goals
 }
     return a_match
 
@@ -31,8 +36,8 @@ def is_match_exist(match):
 
 def is_valid_match(match):
     not_same = match["home_team_id"] != match["away_team_id"]
-    home = teams.is_valid_team(match["home_team_id"])
-    away = teams.is_valid_team(match["away_team_id"])
+    home = teams.is_valid_team("id", match["home_team_id"])
+    away = teams.is_valid_team("id", match["away_team_id"])
     home_goals = match["home_goals"] >= 0
     away_goals = match["away_goals"] >= 0
     return not_same and home and away and home_goals and away_goals
@@ -45,3 +50,5 @@ def add_new_match():
             matches = get_file_content(MATCHES)
             matches.append(match)
             write_to_file(MATCHES, matches)
+    else:
+        print("match info is not right")
