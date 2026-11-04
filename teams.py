@@ -1,4 +1,4 @@
-from files import write_to_file, get_file_content, TEAMS
+from files import write_to_file, get_file_content, TEAMS, MATCHES
 import inputs
 
 
@@ -9,12 +9,19 @@ def get_team(key, value):
                 return team
     
 
-
 def get_team_by_id(team_id):
     return get_team("id", team_id)
 
+
 def get_team_by_name(team_name):
     return get_team("name", team_name)
+
+
+def is_valid_team(key, value):
+    if get_team(key, value) is None:
+        return False
+    return True
+
 
 
 def create_team_object():
@@ -30,7 +37,7 @@ def create_team_object():
 
 def add_new_team():
     team = create_team_object()
-    if not (get_team_by_id(team["id"]) or get_team_by_name(team["name"])):
+    if not (is_valid_team("id", team["id"]) or is_valid_team("id", team["name"])):
         teams = get_file_content(TEAMS)
         teams.append(team)
         write_to_file(TEAMS, teams)

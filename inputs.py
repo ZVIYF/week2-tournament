@@ -3,12 +3,11 @@ def get_string(message):
         user_input = input(message).strip()
         if user_input:
             return user_input
-        raise ValueError
+        print("must be a string")
 
 def get_number(message):
     while True:
         user_input = get_string(message)
-        try:
-            return int(user_input)
-        except ValueError as error:
-            
+        if user_input.is_digit():
+             return int(user_input)
+        print("must be a number")
